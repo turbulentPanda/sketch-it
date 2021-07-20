@@ -57,6 +57,7 @@ table {
 	--title-font-size: 3rem;
 	--normal-font-size: 1.3rem;
 	--small-font-size: 1.1rem;
+	--tiny-font-size: 0.75rem;
 }
 
 * {
@@ -186,4 +187,20 @@ input:checked[type="radio"]::before {
 button {
 	font-size: var(--normal-font-size);
 	padding: 2.5%;
+}
+
+/*** Miscellaneous Control Panel Styling ***/
+.separator {
+	border-bottom: 1px solid #000;
+	line-height: 0.1em;
+	margin: 10px 0 20px;
+	text-align: center;
+	vertical-align: center;
+	width: 100%;
+}
+
+.separator > span {
+	background: #fff;
+	font-size: var(--tiny-font-size);
+	padding: 0 10px;
 }
