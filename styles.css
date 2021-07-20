@@ -74,7 +74,19 @@ body {
 
 .header {
 	display: grid;
+	height: 100%;
 	place-items: center;
+	width: 100%;
+}
+
+.main-content {
+	display: grid;
+	grid-template-areas:
+		"control-panel     coloring-grid";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	height: 100%;
+	width: 100%;
 }
 
 /******** Control Panel ********/
