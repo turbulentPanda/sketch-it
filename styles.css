@@ -53,6 +53,10 @@ table {
 :root {
 	--switch-container-height: 25px;
 	--switch-container-width: calc(var(--switch-container-height) * 2);
+
+	--title-font-size: 1.5rem;
+	--normal-font-size: 1.3rem;
+	--small-font-size: 1rem;
 }
 
 * {
@@ -127,6 +131,10 @@ body {
 .grid-size-controls > input {
 	margin-bottom: 5%;
 	width: 100%;
+}
+
+label[for="grid-size"] {
+	font-size: 
 }
 /*** Toggle Switch Styling ***/
 input[type="checkbox"],
