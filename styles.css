@@ -93,5 +93,12 @@ body {
 
 /******** Control Panel ********/
 .control-panel {
+	display: flex;
+	flex-direction: column;
 	outline: 3px solid red;
+	padding: 7.5%;
+}
+
+.control-panel > fieldset {
+	margin-bottom: 10%;
 }
