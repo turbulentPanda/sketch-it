@@ -72,4 +72,9 @@ body {
 	width: 100%;
 }
 
+.header {
+	display: grid;
+	place-items: center;
+}
+
 /******** Control Panel ********/
