@@ -115,6 +115,17 @@ body {
 	margin-bottom: 10%;
 	width: 100%;
 }
+
+.grid-size-controls {
+	margin-bottom: 10%;
+	text-align: center;
+	width: 100%;
+}
+
+.grid-size-controls > input {
+	margin-bottom: 5%;
+	width: 100%;
+}
 /*** Toggle Switch Styling ***/
 input[type="checkbox"],
 input[type="radio"] {
