@@ -80,13 +80,18 @@ body {
 }
 
 .main-content {
+	align-items: start;
 	display: grid;
 	grid-template-areas:
 		"control-panel     coloring-grid";
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr;
 	height: 100%;
+	justify-items: center;
 	width: 100%;
 }
 
 /******** Control Panel ********/
+.control-panel {
+	outline: 3px solid red;
+}
