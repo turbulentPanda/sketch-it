@@ -107,6 +107,7 @@ body {
 	display: flex;
 	font-size: var(--normal-font-size);
 	flex-direction: column;
+	grid-area: control-panel;
 	min-width: 225px;
 	outline: 3px solid red;
 	padding: 2.5%;
