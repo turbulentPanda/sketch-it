@@ -181,3 +181,9 @@ input:checked[type="radio"]::before {
 	opacity: 0;
 	width: 0;
 }
+
+/*** Button Styling ***/
+button {
+	font-size: var(--normal-font-size);
+	padding: 2.5%;
+}
