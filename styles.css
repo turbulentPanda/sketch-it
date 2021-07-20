@@ -114,7 +114,7 @@ body {
 }
 
 .control-panel > fieldset {
-	margin-bottom: 15%;
+	margin: 2.5%;
 }
 
 .input-container {
@@ -191,17 +191,13 @@ button {
 }
 
 /*** Miscellaneous Control Panel Styling ***/
-.separator {
-	border-bottom: 1px solid #000;
-	line-height: 0.1em;
-	margin: 10px 0 20px;
-	text-align: center;
-	vertical-align: center;
-	width: 100%;
+hr {
+	margin-bottom: 5%;
 }
 
-.separator > span {
-	background: #fff;
+.separator {
 	font-size: var(--tiny-font-size);
-	padding: 0 10px;
+	margin-bottom: 7.5%;
+	text-align: center;
+	width: 100%;
 }
