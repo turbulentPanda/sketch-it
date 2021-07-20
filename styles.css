@@ -105,9 +105,17 @@ body {
 }
 
 .control-panel > fieldset {
-	margin-bottom: 10%;
+	margin-bottom: 15%;
 }
 
+.input-container {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10%;
+	width: 100%;
+}
+/*** Toggle Switch Styling ***/
 input[type="checkbox"],
 input[type="radio"] {
 	appearance: none;
@@ -144,4 +152,10 @@ input[type="radio"]::before {
 input:checked[type="checkbox"]::before,
 input:checked[type="radio"]::before {
 	left: var(--switch-container-height);
+}
+
+#user-selected-color {
+	height: 0;
+	opacity: 0;
+	width: 0;
 }
