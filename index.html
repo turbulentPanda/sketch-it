@@ -17,47 +17,65 @@
         <main class="main-content">
             <form action="#" class="controls-panel">
                 <fieldset class="pencil-eraser-container">
-                    <label for="pencil">Pencil</label>
-                    <input type="radio" id="pencil" class="toggle-switch" value="pencil" name="pencil-eraser" checked>
-
-                    <label for="eraser">Eraser</label>
-                    <input type="radio" id="eraser" class="toggle-switch" value="eraser" name="pencil-eraser">
+                    <div class="input-container">
+                        <label for="pencil">Pencil</label>
+                        <input type="radio" id="pencil" class="toggle-switch" value="pencil" name="pencil-eraser"
+                            checked>
+                    </div>
+                    <div class="input-container">
+                        <label for="eraser">Eraser</label>
+                        <input type="radio" id="eraser" class="toggle-switch" value="eraser" name="pencil-eraser">
+                    </div>
                 </fieldset>
 
                 <fieldset class="color-pickers">
-                    <label class="color-label" for="user-selected-color">Choose A Color</label>
-                    <input type="radio" id="user-selected-color" class="toggle-switch" name="pencil-color" checked>
-                    <input type="color" value="#000000">
+                    <div class="input-container">
+                        <label class="color-label" for="user-selected-color">Choose A Color</label>
+                        <input type="radio" id="user-selected-color" class="toggle-switch" name="pencil-color" checked>
+                        <input type="color" value="#000000">
+                    </div>
 
+                    <div class="input-container">
+                        <label class="color-label" for="black">Black</label>
+                        <input type="radio" name="pencil-color" id="black" class="toggle-switch">
+                    </div>
 
-                    <label class="color-label" for="black">Black</label>
-                    <input type="radio" name="pencil-color" id="black" class="toggle-switch">
-
-                    <label class="color-label" for="greyscale">Greyscale</label>
-                    <input type="radio" name="pencil-color" id="greyscale" class="toggle-switch">
-
-                    <label for="cool-palette" class="color-label">Cool Palette</label>
-                    <input type="radio" name="pencil-color" id="cool-palette" class="toggle-switch">
-
-                    <label for="warm-palette" class="color-label">Warm Palette</label>
-                    <input type="radio" name="pencil-color" id="warm-palette" class="toggle-switch">
-
-                    <label for="random" class="color-label">Random Colors</label>
-                    <input type="radio" name="pencil-color" id="random" class="toggle-switch">
+                    <div class="input-container">
+                        <label class="color-label" for="greyscale">Greyscale</label>
+                        <input type="radio" name="pencil-color" id="greyscale" class="toggle-switch">
+                    </div>
+                    <div class="input-container">
+                        <label for="cool-palette" class="color-label">Cool Palette</label>
+                        <input type="radio" name="pencil-color" id="cool-palette" class="toggle-switch">
+                    </div>
+                    <div class="input-container">
+                        <label for="warm-palette" class="color-label">Warm Palette</label>
+                        <input type="radio" name="pencil-color" id="warm-palette" class="toggle-switch">
+                    </div>
+                    <div class="input-container">
+                        <label for="random" class="color-label">Random Colors</label>
+                        <input type="radio" name="pencil-color" id="random" class="toggle-switch">
+                    </div>
                 </fieldset>
 
                 <fieldset class="color-grid-settings">
-                    <label for="background-color">Background Color</label>
-                    <input type="color" id="background-color" name="background-color" value="#ffffff">
-
-                    <input type="range" id="grid-size" name="grid-size" min="1" max="100" value="50">
-                    <label for="grid-size">
-                        Grid Size: <span></span> x <span></span>
-                    </label>
-
-                    <label for="gridlines">View Gridlines</label>
-                    <input type="checkbox" id="gridlines" name="gridlines" checked>
+                    <div class="input-container">
+                        <label for="background-color">Background Color</label>
+                        <input type="color" id="background-color" name="background-color" value="#ffffff">
+                    </div>
+                    <div class="input-container">
+                        <input type="range" id="grid-size" name="grid-size" min="1" max="100" value="50">
+                        <br>
+                        <label for="grid-size">
+                            Grid Size: <span></span> x <span></span>
+                        </label>
+                    </div>
+                    <div class="input-container">
+                        <label for="gridlines">View Gridlines</label>
+                        <input type="checkbox" id="gridlines" name="gridlines" checked>
+                    </div>
                 </fieldset>
+
                 <button id="clear-grid-button" type="button">Clear Grid</button>
             </form>
             <div class="coloring-grid">
