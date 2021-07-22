@@ -1,14 +1,28 @@
+// ****** Variable Declarations ******
+
+// Coloring Grid Variables
 let gridSizeController = document.querySelector('#grid-size');
 let gridDimension = gridSizeController.getAttribute('value');
-
 let coloringGrid = document.querySelector('#coloring-grid');
 
+// Pencil Color Variables
+let pencilColor;
 
 
+
+// ****** Functions to Run Upon Loading of the Webpage ******
 initializeColoringGrid();
+setPencilColor();
+console.log(pencilColor);
+
+// ****** Choosing the Pencil Color ******
+function setPencilColor(color = '#000000') {
+    pencilColor = `${color}`;
+    return color;
+}
 
 
-// ****** Functions Needed to Initialize and Size the Coloring Grid ******
+// ****** Sizing and Initializing the Coloring Grid ******
 function initializeColoringGrid() {
     resizeColoringGrid(gridDimension);
     displayGridSize();
