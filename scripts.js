@@ -8,6 +8,7 @@ let coloringGrid = document.querySelector('#coloring-grid');
 resizeColoringGrid(gridDimension);
 appendColoringSquares(gridDimension);
 setGridBackgroundColor();
+addColoringSquareBorders();
 
 
 function resizeColoringGrid(gridDimension) {
@@ -40,5 +41,34 @@ function setGridBackgroundColor() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((coloringSquare) => {
         coloringSquare.style.backgroundColor = `${gridBackgroundColor}`;
+    });
+}
+
+// ****** Styling and Adding the Internal Borders of the Coloring Grid ******
+function addColoringSquareBorders() {
+    addTopAndLeftBorders();
+    addRightBorders();
+    addBottomBorders();
+}
+
+function addTopAndLeftBorders() {
+    let coloringSquares = document.querySelectorAll('.coloring-square');
+    coloringSquares.forEach((coloringSquare) => {
+        coloringSquare.style.borderTop = "1px solid rgba(0, 0, 0, .5)";
+        coloringSquare.style.borderLeft = "1px solid rgba(0, 0, 0, .5";
+    });
+}
+
+function addRightBorders() {
+    let rightBorderSquares = document.querySelectorAll('.right-border-square');
+    rightBorderSquares.forEach((rightBorderSquare) => {
+        rightBorderSquare.style.borderRight = "1px solid rgba(0, 0, 0, .5)";
+    });
+}
+
+function addBottomBorders() {
+    let bottomBorderSquares = document.querySelectorAll('.bottom-border-square');
+    bottomBorderSquares.forEach((bottomBorderSquares) => {
+        bottomBorderSquares.style.borderBottom = "1px solid rgba(0, 0, 0, .5)";
     });
 }
