@@ -7,6 +7,7 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 resizeColoringGrid(gridDimension);
 appendColoringSquares(gridDimension);
+setGridBackgroundColor();
 
 
 function resizeColoringGrid(gridDimension) {
@@ -31,4 +32,13 @@ function appendColoringSquares(gridDimension) {
 
         coloringGrid.appendChild(coloringSquare);
     }
+}
+
+function setGridBackgroundColor() {
+    let gridColorPicker = document.querySelector('#grid-background-color');
+    let gridBackgroundColor = gridColorPicker.getAttribute('value');
+    let coloringSquares = document.querySelectorAll('.coloring-square');
+    coloringSquares.forEach((coloringSquare) => {
+        coloringSquare.style.backgroundColor = `${gridBackgroundColor}`;
+    });
 }
