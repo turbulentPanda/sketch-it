@@ -5,11 +5,15 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 
 
-resizeColoringGrid(gridDimension);
-appendColoringSquares(gridDimension);
-setGridBackgroundColor();
-addColoringSquareBorders();
+initializeColoringGrid();
 
+function initializeColoringGrid() {
+    resizeColoringGrid(gridDimension);
+    appendColoringSquares(gridDimension);
+    setGridBackgroundColor();
+    addColoringSquareBorders();
+
+}
 
 function resizeColoringGrid(gridDimension) {
     coloringGrid.setAttribute(
