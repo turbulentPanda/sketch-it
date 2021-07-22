@@ -6,6 +6,7 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 
 resizeColoringGrid(gridDimension);
+appendColoringSquares(gridDimension);
 
 
 function resizeColoringGrid(gridDimension) {
@@ -16,3 +17,18 @@ function resizeColoringGrid(gridDimension) {
     )
 }
 
+function appendColoringSquares(gridDimension) {
+    for (let i = 0; i < (gridDimension ** 2); i++) {
+        let coloringSquare = document.createElement('div');
+        coloringSquare.classList.add('coloring-square');
+        if ((i + 1) % gridDimension === 0) {
+            coloringSquare.classList.add('right-border-square');
+        } // Adds special class to coloring squares on the grid's rightmost edge
+
+        if ((i - gridDimension) >= (gridDimension ** 2 - 2 * gridDimension)) {
+            coloringSquare.classList.add('bottom-border-square');
+        } //Adds special class to coloring squares on the grid's bottommost edge
+
+        coloringGrid.appendChild(coloringSquare);
+    }
+}
