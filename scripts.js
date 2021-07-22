@@ -7,8 +7,11 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 initializeColoringGrid();
 
+
+// ****** Functions Needed to Initialize and Size the Coloring Grid ******
 function initializeColoringGrid() {
     resizeColoringGrid(gridDimension);
+    displayGridSize();
     appendColoringSquares(gridDimension);
     setGridBackgroundColor();
     addColoringSquareBorders();
@@ -21,6 +24,13 @@ function resizeColoringGrid(gridDimension) {
         `grid-template-columns: repeat(${gridDimension}, 1fr);
          grid-template-rows: repeat(${gridDimension}, 1fr)`
     )
+}
+
+function displayGridSize() {
+    let gridDimensionDisplays = document.querySelectorAll('label > span');
+    gridDimensionDisplays.forEach((gridDimensionDisplay) => {
+        gridDimensionDisplay.textContent = `${gridDimension}`;
+    });
 }
 
 function appendColoringSquares(gridDimension) {
