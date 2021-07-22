@@ -1,7 +1,7 @@
 // ****** Variable Declarations ******
 
 // Coloring Grid Variables
-let gridSizeController = document.querySelector('#grid-size');
+let gridSizeController = document.querySelector('#grid-size-controller');
 let gridDimension = gridSizeController.getAttribute('value');
 let coloringGrid = document.querySelector('#coloring-grid');
 
@@ -59,6 +59,12 @@ function appendColoringSquares(gridDimension) {
         } //Adds special class to coloring squares on the grid's bottommost edge
 
         coloringGrid.appendChild(coloringSquare);
+    }
+}
+
+function removeColoringSquares() {
+    for (let i = 0; i <= (gridDimension ** 2); i++) {
+        coloringGrid.removeChild(coloringGrid.firstChild);
     }
 }
 
