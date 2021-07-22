@@ -13,7 +13,6 @@ let pencilColor;
 // ****** Functions to Run Upon Loading of the Webpage ******
 initializeColoringGrid();
 setPencilColor();
-console.log(pencilColor);
 
 // ****** Choosing the Pencil Color ******
 function setPencilColor(color = '#000000') {
@@ -24,7 +23,7 @@ function setPencilColor(color = '#000000') {
 
 // ****** Sizing and Initializing the Coloring Grid ******
 function initializeColoringGrid() {
-    resizeColoringGrid(gridDimension);
+    setColoringGridLayout(gridDimension);
     displayGridSize();
     appendColoringSquares(gridDimension);
     setGridBackgroundColor();
@@ -32,7 +31,7 @@ function initializeColoringGrid() {
 
 }
 
-function resizeColoringGrid(gridDimension) {
+function setColoringGridLayout(gridDimension) {
     coloringGrid.setAttribute(
         'style',
         `grid-template-columns: repeat(${gridDimension}, 1fr);
