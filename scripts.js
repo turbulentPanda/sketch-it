@@ -30,6 +30,10 @@ function addEventListenerToColoringSquares() {
     });
 }
 
+//Event to Change Grid BackgroundColor
+let gridBackgroundColorController = document.querySelector('#grid-background-color');
+gridBackgroundColorController.addEventListener('input', setGridBackgroundColor);
+
 // Event to Clear Grid
 let clearGridButton = document.querySelector('#clear-grid-button');
 clearGridButton.addEventListener('click', setGridBackgroundColor);
