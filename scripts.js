@@ -44,6 +44,11 @@ pencil.addEventListener('input', () => {
     pencilColor = pencilColorCopy;
 });
 
+// Events to Choose Pencil Color
+let uniqueColorPicker = document.querySelector('#unique-color-picker');
+uniqueColorPicker.addEventListener('input', () => {
+    pencilColor = uniqueColorPicker.value;
+});
 
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
