@@ -4,6 +4,8 @@
 let gridSizeController = document.querySelector('#grid-size-controller');
 let gridDimension = getGridDimension();
 let coloringGrid = document.querySelector('#coloring-grid');
+let gridColorPicker = document.querySelector('#grid-background-color');
+let gridBackgroundColor = gridColorPicker.value;
 
 // Pencil Color Variables
 let pencilColor;
@@ -30,6 +32,9 @@ function addEventListenerToColoringSquares() {
     });
 }
 
+// let eraser = document.querySelector('#eraser');
+// eraser.addEventListener('click', setPencilColor(gridBackgroundColor));
+
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
 gridBackgroundColorController.addEventListener('input', setGridBackgroundColor);
@@ -39,7 +44,7 @@ let clearGridButton = document.querySelector('#clear-grid-button');
 clearGridButton.addEventListener('click', setGridBackgroundColor);
 
 // ****** Choosing the Pencil Color ******
-function setPencilColor(color = '#000000') {
+function setPencilColor(color = '#02a0cc') {
     pencilColor = `${color}`;
     return color;
 }
@@ -111,12 +116,16 @@ function removeColoringSquares() {
 }
 
 function setGridBackgroundColor() {
-    let gridColorPicker = document.querySelector('#grid-background-color');
-    let gridBackgroundColor = gridColorPicker.value;
+    let gridBackgroundColor = getGridBackgroundColor();
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((coloringSquare) => {
         coloringSquare.style.backgroundColor = `${gridBackgroundColor}`;
     });
+}
+
+function getGridBackgroundColor() {
+    let gridColorPicker = document.querySelector('#grid-background-color');
+    return gridColorPicker.value;
 }
 
 
