@@ -8,7 +8,12 @@ let coloringGrid = document.querySelector('#coloring-grid');
 // Pencil Color Variables
 let pencilColor;
 
-
+// ****** Event Listeners ******
+gridSizeController.addEventListener('input',
+    resizeColoringGrid,
+    () => {
+        gridDimension = getGridDimension()
+    });
 
 // ****** Functions to Run Upon Loading of the Webpage ******
 initializeColoringGrid();
@@ -31,22 +36,18 @@ function initializeColoringGrid() {
 
 }
 
-// function resizeColoringGrid() {
-//     let newGridDimension = getGridDimension();
-//     removeColoringSquares();
-//     setColoringGridLayout(newGridDimension);
-//     displayGridSize();
-//     appendColoringSquares(newGridDimension);
-//     setGridBackgroundColor();
-//     addColoringSquareBorders();
-// }
-
-gridSizeController.addEventListener('click', () => {
-    gridDimension = getGridDimension();
-});
+function resizeColoringGrid() {
+    let newGridDimension = getGridDimension();
+    removeColoringSquares();
+    setColoringGridLayout(newGridDimension);
+    displayGridSize();
+    appendColoringSquares(newGridDimension);
+    setGridBackgroundColor();
+    addColoringSquareBorders();
+}
 
 function getGridDimension() {
-    return gridSizeController.getAttribute('value');
+    return gridSizeController.value;
 }
 
 function setColoringGridLayout(gridDimension) {
@@ -58,6 +59,7 @@ function setColoringGridLayout(gridDimension) {
 }
 
 function displayGridSize() {
+    let gridDimension = gridSizeController.value;
     let gridDimensionDisplays = document.querySelectorAll('label > span');
     gridDimensionDisplays.forEach((gridDimensionDisplay) => {
         gridDimensionDisplay.textContent = `${gridDimension}`;
@@ -96,8 +98,6 @@ function setGridBackgroundColor() {
 }
 
 
-
-// gridSizeController.addEventListener('click', resizeColoringGrid);
 
 // ****** Styling and Adding the Internal Borders of the Coloring Grid ******
 function addColoringSquareBorders() {
