@@ -95,9 +95,10 @@ body {
 .main-content {
 	align-items: start;
 	display: grid;
+	grid-gap: 5%;
 	grid-template-areas:
 		"control-panel     coloring-grid";
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 40% 1fr;
 	grid-template-rows: 1fr;
 	height: 100%;
 	justify-items: center;
@@ -110,6 +111,9 @@ body {
 	font-size: var(--normal-font-size);
 	flex-direction: column;
 	grid-area: control-panel;
+	height: 700px;
+	justify-content: space-between;
+	justify-self: end;
 	min-width: 225px;
 	outline: 3px solid mistyrose;
 	padding: 2.5%;
@@ -210,7 +214,36 @@ hr {
 	border: 3px solid mistyrose;
 	display: grid;
 	grid-area: coloring-grid;
-	height: 91%;
-	margin-right: 20%;
-	width: 91%;
+	height: 700px;
+	justify-self: start;
+	width: 700px;
+}
+
+/*************** Media Queries ***************/
+@media only screen and (min-width: 1px) and (max-width: 480px) {
+	.header {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	.main-content {
+		grid-gap: 20px;
+		grid-template-areas:
+			"coloring-grid"
+			"control-panel";
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		padding-bottom: 20px;
+	}
+
+	#coloring-grid {
+		height: 90vw;
+		justify-self: center;
+		width: 90vw;
+	}
+
+	#control-panel {
+		align-self: start;
+		justify-self: center;
+		width: 90vw;	
+	}
 }

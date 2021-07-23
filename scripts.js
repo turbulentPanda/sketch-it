@@ -4,6 +4,7 @@
 let gridSizeController = document.querySelector('#grid-size-controller');
 let gridDimension = getGridDimension();
 let coloringGrid = document.querySelector('#coloring-grid');
+let controlPanel = document.querySelector('#control-panel');
 
 // Pencil Color Variables
 let pencil = document.querySelector('#pencil');
@@ -21,6 +22,7 @@ setPencilColor();
 
 // ****************** Event Listeners ******************
 // Events Related to Grid Size
+
 gridSizeController.addEventListener('input',
     resizeColoringGrid,
     () => {
@@ -93,6 +95,8 @@ function setPencilColor(color = '#02a0cc') {
 }
 
 // ****** Sizing and Initializing the Coloring Grid ******
+
+
 function initializeColoringGrid() {
     setColoringGridLayout(gridDimension);
     displayGridSize();
@@ -178,22 +182,22 @@ function addColoringSquareBorders() {
 function addTopAndLeftBorders() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((coloringSquare) => {
-        coloringSquare.style.borderTop = "1px solid rgba(0, 0, 0, .5)";
-        coloringSquare.style.borderLeft = "1px solid rgba(0, 0, 0, .5";
+        coloringSquare.style.borderTop = "1px solid mistyrose";
+        coloringSquare.style.borderLeft = "1px solid mistyrose";
     });
 }
 
 function addRightBorders() {
     let rightBorderSquares = document.querySelectorAll('.right-border-square');
     rightBorderSquares.forEach((rightBorderSquare) => {
-        rightBorderSquare.style.borderRight = "1px solid rgba(0, 0, 0, .5)";
+        rightBorderSquare.style.borderRight = "1px solid mistyrose";
     });
 }
 
 function addBottomBorders() {
     let bottomBorderSquares = document.querySelectorAll('.bottom-border-square');
     bottomBorderSquares.forEach((bottomBorderSquares) => {
-        bottomBorderSquares.style.borderBottom = "1px solid rgba(0, 0, 0, .5)";
+        bottomBorderSquares.style.borderBottom = "1px solid mistyrose";
     });
 }
 
@@ -277,6 +281,32 @@ function changeOpacity(square) {
     }
 }
 
+function chooseOpacity(currentOpacity) {
+    currentOpacity *= 10;
+    switch (currentOpacity) {
+        case 1:
+            return 0.2;
+        case 2:
+            return 0.3;
+        case 3:
+            return 0.4;
+        case 4:
+            return 0.5;
+        case 5:
+            return 0.6;
+        case 6:
+            return 0.7;
+        case 7:
+            return 0.8;
+        case 8:
+            return 0.9;
+        case 9:
+            return 1;
+        default:
+            return 0.1;
+    }
+}
+
 function checkIfGreyScale(square) {
     return (square.style.backgroundColor === '#000000') ?
         true : false;
@@ -327,30 +357,5 @@ function generateRandomNumber(maxNumber) {
     return Math.floor(Math.random() * maxNumber);
 }
 
-function chooseOpacity(currentOpacity) {
-    currentOpacity *= 10;
-    switch (currentOpacity) {
-        case 1:
-            return 0.2;
-        case 2:
-            return 0.3;
-        case 3:
-            return 0.4;
-        case 4:
-            return 0.5;
-        case 5:
-            return 0.6;
-        case 6:
-            return 0.7;
-        case 7:
-            return 0.8;
-        case 8:
-            return 0.9;
-        case 9:
-            return 1;
-        default:
-            return 0.1;
-    }
-}
 
 
