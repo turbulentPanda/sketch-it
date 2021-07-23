@@ -9,6 +9,9 @@ let coloringGrid = document.querySelector('#coloring-grid');
 let pencil = document.querySelector('#pencil');
 let pencilColor = document.querySelector('#unique-color-picker').value;
 let pencilColorCopy;
+let greyscaleColor = `rgba(0, 0, 0, 0.1)`;
+let storedPencil;
+
 
 // ****** Functions to Run Upon Loading of the Webpage ******
 initializeColoringGrid();
@@ -37,6 +40,7 @@ eraser.addEventListener('input', () => {
 // Set Pencil Color to Value Before Eraser Was Toggled upon Toggle
 pencil.addEventListener('input', () => {
     pencilColor = pencilColorCopy;
+    uncheckEraser();
 });
 
 // Events to Choose Pencil Color
@@ -52,8 +56,9 @@ function addEventListenerToColoringSquares() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((square) => {
         square.addEventListener('mouseenter', () => {
-            choosePencilColor()
-            square.style.backgroundColor = pencilColor;
+            choosePencilColor(),
+                checkIfGreyScale(square),
+                square.style.backgroundColor = pencilColor;
         });
     });
 }
@@ -199,37 +204,38 @@ function changeGridlines() {
 }
 
 // ****************** Coloring the Color Squares ******************
-function generateRandomHexColor() {
-    let randomNumber;
-    let hexColor = '#';
-    for (let i = 0; i < 6; i++) {
-        randomNumber = generateRandomNumber(9).toString(16);
-        hexColor += randomNumber;
-    }
-    return hexColor;
-}
 
-function generateRandomNumber(maxNumber) {
-    return Math.floor(Math.random() * maxNumber);
-}
 
 function choosePencilColor() {
+    const uniquePencil = document.querySelector('#user-selected-color');
     const blackPencil = document.querySelector('#black-pencil');
+    let greyscalePencil = document.querySelector('#greyscale-pencil')
     const coolPalettePencil = document.querySelector('#cool-palette-pencil');
     const warmPalettePencil = document.querySelector('#warm-palette-pencil');
     const randomPencil = document.querySelector('#random-pencil');
 
     if (!eraser.checked) {
-        if (blackPencil.checked === true) {
+        if (uniquePencil.checked) {
+            pencilColor = document.getElementById('unique-color-picker').value;
+            storedPencil = uniquePencil.getAttribute('id');
+        } else if (blackPencil.checked === true) {
             pencilColor = '#000000';
+            storedPencil = blackPencil.getAttribute('id');
+        } else if (greyscalePencil.checked === true) {
+            pencilColor = 'rgba(0, 0, 0, 0.1)';
+            storedPencil = greyscalePencil.getAttribute('id');
         } else if (coolPalettePencil.checked === true) {
             pencilColor = generateRandomCoolPaletteColor();
+            storedPencil = coolPalettePencil.getAttribute('id');
         } else if (warmPalettePencil.checked === true) {
             pencilColor = generateRandomWarmPaletteColor();
+            storedPencil = warmPalettePencil.getAttribute('id');
         } else if (randomPencil.checked === true) {
             pencilColor = generateRandomHexColor();
+            storedPencil = randomPencil.getAttribute('id');
         }
         pencilColorCopy = pencilColor;
+        getStoredPencil();
     } else {
         pencilColor = getGridBackgroundColor();
     }
@@ -240,14 +246,28 @@ function choosePencilColor() {
 function uncheckEraser() {
     eraser.checked = false;
     pencil.checked = true;
-    pencilColor = pencilColorCopy;
+}
+
+function getStoredPencil() {
+    if (storedPencil) {
+        document.getElementById(storedPencil).checked = true;
+    }
 }
 
 
 function uncheckPencils() {
-
     for (let pencil of pencils) {
         pencil.checked = false;
+    }
+}
+
+function generateGreyScaleColor(square) {
+    if (checkIfGreyScale(square.style.backgroundColor)) {
+        currentOpacity = square.style.opacity;
+        newOpacity = square.style.opacity + .1;
+        return `rgba(0, 0, 0, ${newOpacity})`;
+    } else {
+        return 'rgba(0, 0, 0, 0.1)';
     }
 }
 
@@ -282,3 +302,21 @@ function generateRandomWarmPaletteColor() {
     return warmPalette[randomIndex];
 }
 
+function generateRandomHexColor() {
+    let randomNumber;
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+        randomNumber = generateRandomNumber(9).toString(16);
+        hexColor += randomNumber;
+    }
+    return hexColor;
+}
+
+function generateRandomNumber(maxNumber) {
+    return Math.floor(Math.random() * maxNumber);
+}
+
+function checkIfGreyScale(square) {
+    (square.style.backgroundColor == 'rgba(0, 0, 0, *') ?
+        true : false;
+}
