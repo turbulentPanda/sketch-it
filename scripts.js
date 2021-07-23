@@ -50,6 +50,11 @@ uniqueColorPicker.addEventListener('input', () => {
     pencilColor = uniqueColorPicker.value;
 });
 
+let blackPencil = document.querySelector('#black-pencil');
+blackPencil.addEventListener('input', () => {
+    pencilColor = '#000000';
+});
+
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
 gridBackgroundColorController.addEventListener('input', setGridBackgroundColor);
