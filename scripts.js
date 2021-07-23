@@ -48,6 +48,7 @@ pencil.addEventListener('input', () => {
 let uniqueColorPicker = document.querySelector('#unique-color-picker');
 uniqueColorPicker.addEventListener('input', () => {
     pencilColor = uniqueColorPicker.value;
+    document.getElementById('user-selected-color').checked = true;
 });
 
 let blackPencil = document.querySelector('#black-pencil');
