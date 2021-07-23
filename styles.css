@@ -68,6 +68,7 @@ table {
 }
 
 body {
+	background: rgba(255, 228, 225, 0.3);
 	height: 100vh;
 	width: 100vw;
 }
@@ -107,6 +108,7 @@ body {
 
 /*************** Control Panel ***************/
 #control-panel {
+	background-color: white;
 	display: flex;
 	font-size: var(--normal-font-size);
 	flex-direction: column;
@@ -115,7 +117,7 @@ body {
 	justify-content: space-between;
 	justify-self: end;
 	min-width: 225px;
-	outline: 3px solid mistyrose;
+	outline: 3px solid #985f6f;
 	padding: 2.5%;
 	width: 27.5%;
 }
@@ -162,7 +164,7 @@ input[type="radio"] {
 
 input[type="checkbox"]:checked,
 input[type="radio"]:checked {
-	background: rgb(39, 160, 39);
+	background: #258ea6;
 }
 
 input[type="checkbox"]::before,
@@ -193,8 +195,11 @@ input:checked[type="radio"]::before {
 
 /*** Button Styling ***/
 button {
+	background-color: #fff;
+	border: 1px solid #985f6f;
 	font-size: var(--normal-font-size);
 	padding: 2.5%;
+	width: 100%;
 }
 
 /*** Miscellaneous Control Panel ***/
@@ -211,7 +216,7 @@ hr {
 
 /*************** Coloring Grid ***************/
 #coloring-grid {
-	border: 3px solid mistyrose;
+	border: 3px solid #985f6f;
 	display: grid;
 	grid-area: coloring-grid;
 	height: 700px;
@@ -247,3 +252,51 @@ hr {
 		width: 90vw;	
 	}
 }
+
+@media only screen and (min-width: 481px) and (max-width: 1300px) {
+	.main-content {
+		grid-template-areas:
+		"coloring-grid"
+		"control-panel";
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		padding-bottom: 20px;
+	}
+
+	#coloring-grid {
+		height: 500px;
+		justify-self: center;
+		width: 500px;
+	}
+
+	#control-panel {
+		flex-direction: row;
+		font-size: 16px;
+		height: 300px;
+		justify-content: space-between;
+		justify-self: center;
+		width: 90%;
+	}
+
+	
+	.pencil-eraser-container,
+	.color-pickers,
+	.color-grid-settings {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr;
+		margin: 0 20px 20px 20px;
+		place-items: center;
+	}
+
+	.color-grid-settings input[type="checkbox"],
+	.toggle-switch {
+		margin-left: 25px;
+	}
+	button {
+		font-size: 16px;
+		height: fit-content;
+		width: 75%;
+	}
+}
+

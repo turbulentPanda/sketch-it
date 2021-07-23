@@ -182,22 +182,22 @@ function addColoringSquareBorders() {
 function addTopAndLeftBorders() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((coloringSquare) => {
-        coloringSquare.style.borderTop = "1px solid mistyrose";
-        coloringSquare.style.borderLeft = "1px solid mistyrose";
+        coloringSquare.style.borderTop = "1px solid #985f6f";
+        coloringSquare.style.borderLeft = "1px solid #985f6f";
     });
 }
 
 function addRightBorders() {
     let rightBorderSquares = document.querySelectorAll('.right-border-square');
     rightBorderSquares.forEach((rightBorderSquare) => {
-        rightBorderSquare.style.borderRight = "1px solid mistyrose";
+        rightBorderSquare.style.borderRight = "1px solid #985f6f";
     });
 }
 
 function addBottomBorders() {
     let bottomBorderSquares = document.querySelectorAll('.bottom-border-square');
     bottomBorderSquares.forEach((bottomBorderSquares) => {
-        bottomBorderSquares.style.borderBottom = "1px solid mistyrose";
+        bottomBorderSquares.style.borderBottom = "1px solid #985f6f";
     });
 }
 
