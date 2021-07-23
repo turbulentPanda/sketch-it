@@ -8,22 +8,35 @@ let coloringGrid = document.querySelector('#coloring-grid');
 // Pencil Color Variables
 let pencilColor;
 
-// ****** Event Listeners ******
+// ****** Functions to Run Upon Loading of the Webpage ******
+initializeColoringGrid();
+setPencilColor();
+
+// ****************** Event Listeners ******************
+// Events Related to Grid Size
 gridSizeController.addEventListener('input',
     resizeColoringGrid,
     () => {
         gridDimension = getGridDimension()
     });
 
-// ****** Functions to Run Upon Loading of the Webpage ******
-initializeColoringGrid();
-setPencilColor();
+//Events Related to Coloring the Grid
+function addEventListenerToColoringSquares() {
+    let coloringSquares = document.querySelectorAll('.coloring-square');
+    coloringSquares.forEach((square) => {
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = pencilColor;
+        });
+    });
+}
 
 // ****** Choosing the Pencil Color ******
 function setPencilColor(color = '#000000') {
     pencilColor = `${color}`;
     return color;
 }
+
+
 
 
 // ****** Sizing and Initializing the Coloring Grid ******
@@ -33,7 +46,7 @@ function initializeColoringGrid() {
     appendColoringSquares(gridDimension);
     setGridBackgroundColor();
     addColoringSquareBorders();
-
+    addEventListenerToColoringSquares();
 }
 
 function resizeColoringGrid() {
@@ -44,6 +57,7 @@ function resizeColoringGrid() {
     appendColoringSquares(newGridDimension);
     setGridBackgroundColor();
     addColoringSquareBorders();
+    addEventListenerToColoringSquares();
 }
 
 function getGridDimension() {
@@ -127,3 +141,5 @@ function addBottomBorders() {
         bottomBorderSquares.style.borderBottom = "1px solid rgba(0, 0, 0, .5)";
     });
 }
+
+// ****************** Coloring the Color Squares ******************
