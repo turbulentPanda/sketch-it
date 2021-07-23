@@ -55,19 +55,13 @@ function addEventListenerToColoringSquares() {
     });
 }
 
-let pencils = [
-    document.querySelector('#black-pencil'),
-    document.querySelector('#greyscale-pencil'),
-    document.querySelector('#cool-palette-pencil'),
-    document.querySelector('#warm-palette-pencil'),
-    document.querySelector('#random-pencil')
-]
-
-for (let pencil of pencils) {
+let pencils = document.querySelectorAll('.pencil');
+pencils.forEach((pencil) => {
     pencil.addEventListener('input', () => {
         uncheckEraser();
     });
-}
+});
+
 
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
