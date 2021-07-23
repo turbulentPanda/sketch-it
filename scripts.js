@@ -7,6 +7,7 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 // Pencil Color Variables
 let pencilColor;
+let pencilColorCopy;
 
 // ****** Functions to Run Upon Loading of the Webpage ******
 initializeColoringGrid();
@@ -31,7 +32,7 @@ function addEventListenerToColoringSquares() {
 }
 
 // let eraser = document.querySelector('#eraser');
-// eraser.addEventListener('click', setPencilColor(getGridBackgroundColor));
+// eraser.addEventListener('input', setPencilColor(getGridBackgroundColor));
 
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
@@ -43,7 +44,8 @@ clearGridButton.addEventListener('click', setGridBackgroundColor);
 
 // ****** Choosing the Pencil Color ******
 function setPencilColor(color = '#02a0cc') {
-    pencilColor = color;
+    pencilColorCopy = pencilColor;
+    pencilColor = `${color}`;
     return color;
 }
 
