@@ -2,7 +2,7 @@
 
 // Coloring Grid Variables
 let gridSizeController = document.querySelector('#grid-size-controller');
-let gridDimension = gridSizeController.getAttribute('value');
+let gridDimension = getGridDimension();
 let coloringGrid = document.querySelector('#coloring-grid');
 
 // Pencil Color Variables
@@ -29,6 +29,24 @@ function initializeColoringGrid() {
     setGridBackgroundColor();
     addColoringSquareBorders();
 
+}
+
+// function resizeColoringGrid() {
+//     let newGridDimension = getGridDimension();
+//     removeColoringSquares();
+//     setColoringGridLayout(newGridDimension);
+//     displayGridSize();
+//     appendColoringSquares(newGridDimension);
+//     setGridBackgroundColor();
+//     addColoringSquareBorders();
+// }
+
+gridSizeController.addEventListener('click', () => {
+    gridDimension = getGridDimension();
+});
+
+function getGridDimension() {
+    return gridSizeController.getAttribute('value');
 }
 
 function setColoringGridLayout(gridDimension) {
@@ -63,7 +81,7 @@ function appendColoringSquares(gridDimension) {
 }
 
 function removeColoringSquares() {
-    for (let i = 0; i <= (gridDimension ** 2); i++) {
+    while (coloringGrid.firstChild) {
         coloringGrid.removeChild(coloringGrid.firstChild);
     }
 }
@@ -76,6 +94,10 @@ function setGridBackgroundColor() {
         coloringSquare.style.backgroundColor = `${gridBackgroundColor}`;
     });
 }
+
+
+
+// gridSizeController.addEventListener('click', resizeColoringGrid);
 
 // ****** Styling and Adding the Internal Borders of the Coloring Grid ******
 function addColoringSquareBorders() {
