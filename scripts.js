@@ -9,8 +9,10 @@ let coloringGrid = document.querySelector('#coloring-grid');
 let pencil = document.querySelector('#pencil');
 let pencilColor = document.querySelector('#unique-color-picker').value;
 let pencilColorCopy;
-let greyscaleColor = `rgba(0, 0, 0, 0.1)`;
+let greyScalePencil = document.querySelector('#greyscale-pencil');
+let greyscaleColor = '#000000';
 let storedPencil;
+let squareOpacity = '0.1';
 
 
 // ****** Functions to Run Upon Loading of the Webpage ******
@@ -57,8 +59,12 @@ function addEventListenerToColoringSquares() {
     coloringSquares.forEach((square) => {
         square.addEventListener('mouseenter', () => {
             choosePencilColor(),
-                checkIfGreyScale(square),
                 square.style.backgroundColor = pencilColor;
+            if (greyScalePencil.checked == true) {
+                square.style.opacity = chooseOpacity(square.style.opacity);
+            } else {
+                square.style.opacity = '1';
+            }
         });
     });
 }
@@ -222,7 +228,7 @@ function choosePencilColor() {
             pencilColor = '#000000';
             storedPencil = blackPencil.getAttribute('id');
         } else if (greyscalePencil.checked === true) {
-            pencilColor = 'rgba(0, 0, 0, 0.1)';
+            pencilColor = '#000000'
             storedPencil = greyscalePencil.getAttribute('id');
         } else if (coolPalettePencil.checked === true) {
             pencilColor = generateRandomCoolPaletteColor();
@@ -261,14 +267,19 @@ function uncheckPencils() {
     }
 }
 
-function generateGreyScaleColor(square) {
-    if (checkIfGreyScale(square.style.backgroundColor)) {
-        currentOpacity = square.style.opacity;
-        newOpacity = square.style.opacity + .1;
-        return `rgba(0, 0, 0, ${newOpacity})`;
+function changeOpacity(square) {
+    let squareColor = square.style.backgroundColor;
+    let currentOpacity = square.style.opacity;
+    if (greyScalePencil.checked === true) {
+        square.style.opacity = chooseOpacity(currentOpacity);
     } else {
-        return 'rgba(0, 0, 0, 0.1)';
+        square.style.opacity = '1';
     }
+}
+
+function checkIfGreyScale(square) {
+    return (square.style.backgroundColor === '#000000') ?
+        true : false;
 }
 
 function generateRandomCoolPaletteColor() {
@@ -316,7 +327,30 @@ function generateRandomNumber(maxNumber) {
     return Math.floor(Math.random() * maxNumber);
 }
 
-function checkIfGreyScale(square) {
-    (square.style.backgroundColor == 'rgba(0, 0, 0, *') ?
-        true : false;
+function chooseOpacity(currentOpacity) {
+    currentOpacity *= 10;
+    switch (currentOpacity) {
+        case 1:
+            return 0.2;
+        case 2:
+            return 0.3;
+        case 3:
+            return 0.4;
+        case 4:
+            return 0.5;
+        case 5:
+            return 0.6;
+        case 6:
+            return 0.7;
+        case 7:
+            return 0.8;
+        case 8:
+            return 0.9;
+        case 9:
+            return 1;
+        default:
+            return 0.1;
+    }
 }
+
+
