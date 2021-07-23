@@ -30,6 +30,10 @@ function addEventListenerToColoringSquares() {
     });
 }
 
+// Event to Clear Grid
+let clearGridButton = document.querySelector('#clear-grid-button');
+clearGridButton.addEventListener('click', setGridBackgroundColor);
+
 // ****** Choosing the Pencil Color ******
 function setPencilColor(color = '#000000') {
     pencilColor = `${color}`;
@@ -104,7 +108,7 @@ function removeColoringSquares() {
 
 function setGridBackgroundColor() {
     let gridColorPicker = document.querySelector('#grid-background-color');
-    let gridBackgroundColor = gridColorPicker.getAttribute('value');
+    let gridBackgroundColor = gridColorPicker.value;
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((coloringSquare) => {
         coloringSquare.style.backgroundColor = `${gridBackgroundColor}`;
