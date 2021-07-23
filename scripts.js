@@ -22,21 +22,13 @@ gridSizeController.addEventListener('input',
         gridDimension = getGridDimension()
     });
 
-// ***Events Related to Coloring the Grid***
-function addEventListenerToColoringSquares() {
-    let coloringSquares = document.querySelectorAll('.coloring-square');
-    coloringSquares.forEach((square) => {
-        square.addEventListener('mouseenter', () => {
-            square.style.backgroundColor = pencilColor;
-        });
-    });
-}
 
 // Set Eraser to Grid BackgroundColor Upon Toggle
 let eraser = document.querySelector('#eraser');
 eraser.addEventListener('input', () => {
     pencilColorCopy = pencilColor;
     pencilColor = getGridBackgroundColor();
+    uncheckPencils();
 });
 
 // Set Pencil Color to Value Before Eraser Was Toggled upon Toggle
@@ -51,12 +43,17 @@ uniqueColorPicker.addEventListener('input', () => {
     document.getElementById('user-selected-color').checked = true;
 });
 
-let blackPencil = document.querySelector('#black-pencil');
-blackPencil.addEventListener('input', () => {
-    pencilColor = '#000000';
-});
 
-
+// ***Events Related to Coloring the Grid***
+function addEventListenerToColoringSquares() {
+    let coloringSquares = document.querySelectorAll('.coloring-square');
+    coloringSquares.forEach((square) => {
+        square.addEventListener('mouseenter', () => {
+            choosePencilColor();
+            square.style.backgroundColor = pencilColor;
+        });
+    });
+}
 
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
@@ -182,12 +179,33 @@ function addBottomBorders() {
 function generateRandomHexColor() {
     let randomNumber = generateRandomNumber(256 ** 3);
     let hexColor = '#' + randomNumber.toString(16);
-    console.log(hexColor);
     return hexColor;
 }
 
-generateRandomHexColor();
-
 function generateRandomNumber(maxNumber) {
     return Math.floor(Math.random() * maxNumber);
+}
+
+function choosePencilColor() {
+    let blackPencil = document.querySelector('#black-pencil');
+    let randomPencil = document.querySelector('#random-pencil');
+
+    if (blackPencil.checked === true) {
+        pencilColor = '#000000';
+    } else if (randomPencil.checked === true) {
+        pencilColor = generateRandomHexColor();
+    }
+}
+
+function uncheckPencils() {
+    let pencils = [
+        document.querySelector('#black-pencil'),
+        document.querySelector('#greyscale-pencil'),
+        document.querySelector('#cool-palette-pencil'),
+        document.querySelector('#warm-palette-pencil'),
+        document.querySelector('#random-pencil')
+    ]
+    for (let pencil of pencils) {
+        pencil.checked = false;
+    }
 }
