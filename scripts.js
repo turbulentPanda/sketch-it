@@ -56,6 +56,8 @@ blackPencil.addEventListener('input', () => {
     pencilColor = '#000000';
 });
 
+
+
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
 gridBackgroundColorController.addEventListener('input', setGridBackgroundColor);
@@ -177,3 +179,15 @@ function addBottomBorders() {
 }
 
 // ****************** Coloring the Color Squares ******************
+function generateRandomHexColor() {
+    let randomNumber = generateRandomNumber(256 ** 3);
+    let hexColor = '#' + randomNumber.toString(16);
+    console.log(hexColor);
+    return hexColor;
+}
+
+generateRandomHexColor();
+
+function generateRandomNumber(maxNumber) {
+    return Math.floor(Math.random() * maxNumber);
+}
