@@ -6,7 +6,8 @@ let gridDimension = getGridDimension();
 let coloringGrid = document.querySelector('#coloring-grid');
 
 // Pencil Color Variables
-let pencilColor;
+let pencil = document.querySelector('#pencil');
+let pencilColor = pencil.value;
 let pencilColorCopy;
 
 // ****** Functions to Run Upon Loading of the Webpage ******
@@ -21,7 +22,7 @@ gridSizeController.addEventListener('input',
         gridDimension = getGridDimension()
     });
 
-//Events Related to Coloring the Grid
+// ***Events Related to Coloring the Grid***
 function addEventListenerToColoringSquares() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((square) => {
@@ -31,8 +32,18 @@ function addEventListenerToColoringSquares() {
     });
 }
 
-// let eraser = document.querySelector('#eraser');
-// eraser.addEventListener('input', setPencilColor(getGridBackgroundColor));
+// Set Eraser to Grid BackgroundColor Upon Toggle
+let eraser = document.querySelector('#eraser');
+eraser.addEventListener('input', () => {
+    pencilColorCopy = pencilColor;
+    pencilColor = getGridBackgroundColor();
+});
+
+// Set Pencil Color to Value Before Eraser Was Toggled upon Toggle
+pencil.addEventListener('input', () => {
+    pencilColor = pencilColorCopy;
+});
+
 
 //Event to Change Grid BackgroundColor
 let gridBackgroundColorController = document.querySelector('#grid-background-color');
@@ -46,11 +57,8 @@ clearGridButton.addEventListener('click', setGridBackgroundColor);
 function setPencilColor(color = '#02a0cc') {
     pencilColorCopy = pencilColor;
     pencilColor = `${color}`;
-    return pencilColor;
+    return [pencilColor, pencilColorCopy];
 }
-
-
-
 
 // ****** Sizing and Initializing the Coloring Grid ******
 function initializeColoringGrid() {
