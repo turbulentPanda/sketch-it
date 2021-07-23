@@ -199,11 +199,17 @@ function generateRandomNumber(maxNumber) {
 }
 
 function choosePencilColor() {
-    let blackPencil = document.querySelector('#black-pencil');
-    let randomPencil = document.querySelector('#random-pencil');
+    const blackPencil = document.querySelector('#black-pencil');
+    const coolPalettePencil = document.querySelector('#cool-palette-pencil');
+    const warmPalettePencil = document.querySelector('#warm-palette-pencil');
+    const randomPencil = document.querySelector('#random-pencil');
     if (!eraser.checked) {
         if (blackPencil.checked === true) {
             pencilColor = '#000000';
+        } else if (coolPalettePencil.checked === true) {
+            pencilColor = generateRandomCoolPaletteColor();
+        } else if (warmPalettePencil.checked === true) {
+            pencilColor = generateRandomWarmPaletteColor();
         } else if (randomPencil.checked === true) {
             pencilColor = generateRandomHexColor();
         }
@@ -224,4 +230,35 @@ function uncheckPencils() {
     for (let pencil of pencils) {
         pencil.checked = false;
     }
+}
+
+function generateRandomCoolPaletteColor() {
+    const coolPalette = [
+        '#7400B8',
+        '#6930C3',
+        '#5E60CE',
+        '#5390D9',
+        '#4EA8DE',
+        '#48BFE3',
+        '#56CFE1',
+        '#64DFDF',
+        '#72EFDD',
+        '#80FFDB'
+    ];
+    let randomIndex = generateRandomNumber(coolPalette.length);
+    return coolPalette[randomIndex];
+}
+
+function generateRandomWarmPaletteColor() {
+    const warmPalette = [
+        '#9D0208',
+        '#D00000',
+        '#DC2F02',
+        '#E85D04',
+        '#F48C06',
+        '#FAA307',
+        '#FFBA08'
+    ];
+    let randomIndex = generateRandomNumber(warmPalette.length);
+    return warmPalette[randomIndex];
 }
