@@ -46,7 +46,7 @@ clearGridButton.addEventListener('click', setGridBackgroundColor);
 function setPencilColor(color = '#02a0cc') {
     pencilColorCopy = pencilColor;
     pencilColor = `${color}`;
-    return color;
+    return pencilColor;
 }
 
 
