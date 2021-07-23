@@ -7,7 +7,7 @@ let coloringGrid = document.querySelector('#coloring-grid');
 
 // Pencil Color Variables
 let pencil = document.querySelector('#pencil');
-let pencilColor = pencil.value;
+let pencilColor = document.querySelector('#unique-color-picker').value;
 let pencilColorCopy;
 
 // ****** Functions to Run Upon Loading of the Webpage ******
@@ -22,6 +22,9 @@ gridSizeController.addEventListener('input',
         gridDimension = getGridDimension()
     });
 
+// Events Related to Grid Borders
+let gridlineController = document.querySelector('#gridlines');
+gridlineController.addEventListener('input', changeGridlines);
 
 // Set Eraser to Grid BackgroundColor Upon Toggle
 let eraser = document.querySelector('#eraser');
@@ -183,6 +186,18 @@ function addBottomBorders() {
     });
 }
 
+function removeBorders() {
+    let coloringSquares = document.querySelectorAll('.coloring-square');
+    coloringSquares.forEach((coloringSquare) => {
+        coloringSquare.style.border = "none";
+    });
+}
+
+function changeGridlines() {
+    let gridlineController = document.querySelector('#gridlines');
+    (gridlineController.checked) ? addColoringSquareBorders() : removeBorders();
+}
+
 // ****************** Coloring the Color Squares ******************
 function generateRandomHexColor() {
     let randomNumber;
@@ -203,6 +218,7 @@ function choosePencilColor() {
     const coolPalettePencil = document.querySelector('#cool-palette-pencil');
     const warmPalettePencil = document.querySelector('#warm-palette-pencil');
     const randomPencil = document.querySelector('#random-pencil');
+
     if (!eraser.checked) {
         if (blackPencil.checked === true) {
             pencilColor = '#000000';
@@ -213,15 +229,18 @@ function choosePencilColor() {
         } else if (randomPencil.checked === true) {
             pencilColor = generateRandomHexColor();
         }
+        pencilColorCopy = pencilColor;
     } else {
         pencilColor = getGridBackgroundColor();
     }
+
     uniqueColorPicker.value = pencilColor;
 }
 
 function uncheckEraser() {
     eraser.checked = false;
     pencil.checked = true;
+    pencilColor = pencilColorCopy;
 }
 
 
@@ -262,3 +281,4 @@ function generateRandomWarmPaletteColor() {
     let randomIndex = generateRandomNumber(warmPalette.length);
     return warmPalette[randomIndex];
 }
+
