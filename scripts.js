@@ -49,9 +49,23 @@ function addEventListenerToColoringSquares() {
     let coloringSquares = document.querySelectorAll('.coloring-square');
     coloringSquares.forEach((square) => {
         square.addEventListener('mouseenter', () => {
-            choosePencilColor();
+            choosePencilColor()
             square.style.backgroundColor = pencilColor;
         });
+    });
+}
+
+let pencils = [
+    document.querySelector('#black-pencil'),
+    document.querySelector('#greyscale-pencil'),
+    document.querySelector('#cool-palette-pencil'),
+    document.querySelector('#warm-palette-pencil'),
+    document.querySelector('#random-pencil')
+]
+
+for (let pencil of pencils) {
+    pencil.addEventListener('input', () => {
+        uncheckEraser();
     });
 }
 
@@ -177,8 +191,12 @@ function addBottomBorders() {
 
 // ****************** Coloring the Color Squares ******************
 function generateRandomHexColor() {
-    let randomNumber = generateRandomNumber(256 ** 3);
-    let hexColor = '#' + randomNumber.toString(16);
+    let randomNumber;
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+        randomNumber = generateRandomNumber(9).toString(16);
+        hexColor += randomNumber;
+    }
     return hexColor;
 }
 
@@ -189,22 +207,26 @@ function generateRandomNumber(maxNumber) {
 function choosePencilColor() {
     let blackPencil = document.querySelector('#black-pencil');
     let randomPencil = document.querySelector('#random-pencil');
-
-    if (blackPencil.checked === true) {
-        pencilColor = '#000000';
-    } else if (randomPencil.checked === true) {
-        pencilColor = generateRandomHexColor();
+    if (!eraser.checked) {
+        if (blackPencil.checked === true) {
+            pencilColor = '#000000';
+        } else if (randomPencil.checked === true) {
+            pencilColor = generateRandomHexColor();
+        }
+    } else {
+        pencilColor = getGridBackgroundColor();
     }
+    uniqueColorPicker.value = pencilColor;
 }
 
+function uncheckEraser() {
+    eraser.checked = false;
+    pencil.checked = true;
+}
+
+
 function uncheckPencils() {
-    let pencils = [
-        document.querySelector('#black-pencil'),
-        document.querySelector('#greyscale-pencil'),
-        document.querySelector('#cool-palette-pencil'),
-        document.querySelector('#warm-palette-pencil'),
-        document.querySelector('#random-pencil')
-    ]
+
     for (let pencil of pencils) {
         pencil.checked = false;
     }
