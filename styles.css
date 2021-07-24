@@ -192,6 +192,9 @@ input:checked[type="radio"]::before {
 	opacity: 0;
 	width: 0;
 }
+#control-panel input {
+	cursor: pointer;
+}
 
 /*** Button Styling ***/
 button {
@@ -200,6 +203,11 @@ button {
 	font-size: var(--normal-font-size);
 	padding: 2.5%;
 	width: 100%;
+}
+
+button:hover {
+	background-color: rgba(255, 228, 225, 0.7);
+	cursor: pointer;
 }
 
 /*** Miscellaneous Control Panel ***/
