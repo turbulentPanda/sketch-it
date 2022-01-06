@@ -1,5 +1,8 @@
 # Sketch-It!
 
+## Live Preview:
+https://turbulentpanda.github.io/sketch-it/
+
 ## Project Motivation:
 To practice vanilla JavaScript, DOM manipulation, and event handling.
 
